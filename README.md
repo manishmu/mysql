@@ -1,2 +1,2 @@
 # mysql
-Hello world This is my test file.
+Hello world This is my test file and learning git now.
