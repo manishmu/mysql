@@ -9,3 +9,4 @@ echo "$a"
 sleep 120
 #echo "$date" 
 echo "$b"
+#BACKUP COMPLETED SUCCESSFULLY
