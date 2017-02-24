@@ -1,5 +1,6 @@
 #!/bin/bash
 #get the user name loged in
+#This is script gives the system info.
 a=`whoami`
 b=`date +%A`
 d=`date +%D`
