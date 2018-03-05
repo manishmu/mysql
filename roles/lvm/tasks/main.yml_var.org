@@ -1,0 +1,11 @@
+---
+- name: Install lvm2
+  yum: name=lvm2 state=present
+- name: create vg
+  lvg: vg={{ vgname }} pvs={{ disks }}
+- name: Create lvm
+  lvol: vg={{ vgname }} lv={{ lvname }} size={{ size }}
+- name: create filesystem
+  filesystem: fstype=ext4 dev=/dev/{{ vgname }}/{{ lvname }}
+- name: mount the lvm
+  mount: name=/lvdata src=/dev/{{ vgname }}/{{ lvname }} fstype=ext4 state=mounted

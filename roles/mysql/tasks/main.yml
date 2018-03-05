@@ -1,0 +1,56 @@
+---
+- name: copy repo file 
+  template: src=MariaDB.repo.j2 dest=/etc/yum.repos.d/MariaDB.repo
+
+- name: Install mysql-server
+  yum: name=MariaDB-server state=installed
+
+- name: Install MariaDB-Client
+  yum: name=MariaDB-client state=installed
+  notify:
+   - Restart mysql 
+
+- name: install python-mysqldb
+  yum: name=MySQL-python state=installed
+
+- name: create databases
+  mysql_db: name=prod state=present
+
+- name: create database user
+  mysql_user: name=test password=test123 host=localhost priv='*.*:ALL,GRANT' state=present
+
+- name: copy table.sql to remote
+  template: src={{ item }} dest=/tmp/
+  with_items:
+  - table_persons.sql
+  - table_data.sql
+
+- name: copy table_check.sql to remote
+  template: src=table_check.sql.j2 dest=/tmp/table_check.sql
+
+- name: create table persons
+  mysql_db: name=prod state=import target=/tmp/table_persons.sql 
+  ignore_errors: yes
+
+- name: create table data
+  mysql_db: name=prod state=import target=/tmp/table_data.sql
+  ignore_errors: yes
+
+- name: check table presence
+  shell: mysql -utest -p12345 -D prod < /tmp/table_check.sql|tail -n +2 > /tmp/table_check.sql.log
+
+- name: check the output file
+  command: /bin/cat /tmp/table_check.sql.log
+  register: cat
+  changed_when: false
+
+- name: print output of file
+  debug: var=cat.stdout
+
+- name: delete copied files
+  file: path=/tmp/{{ item }} state=absent
+  with_items:
+  - "{{ files }}"
+
+#- name: Delete mysql user craeted 
+#  mysql_user: name=test state=absent

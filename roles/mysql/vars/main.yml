@@ -1,0 +1,10 @@
+---
+files:
+- table_check.sql
+- table_persons.sql
+- table_data.sql 
+- table_check.sql.log 
+#dbuser:
+#- "test"
+#dbpass:
+#- "test.123"

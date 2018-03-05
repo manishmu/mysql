@@ -1,0 +1,5 @@
+---
+- name: Install sysstat
+  yum: name=sysstat state=present
+  notify:
+  - Retsart sysstat

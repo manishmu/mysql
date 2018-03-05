@@ -1,0 +1,6 @@
+---
+vgname: vg0
+lvname: anslv
+size:  512M
+#disks: /dev/sdb5,/dev/sdb6
+disks: /dev/sdb,/dev/sdc

@@ -1,0 +1,15 @@
+---
+- hosts: all
+  sudo: yes
+  gather_facts: yes
+  roles:
+  - httpd
+  - sar
+  - useraddeithsudoaccess
+  - ssh
+  - ntp
+  - mysql
+#- include: http.yml
+  - services
+#  - lvm
+#  - filedelete

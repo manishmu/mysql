@@ -1,0 +1,9 @@
+---
+- name: create openvz-vm
+  command: /usr/sbin/vzctl create {{ my_ct_id }} --ostemplate {{ my_os }} --ipadd {{ my_ip }} --diskspace {{my_space}}  --hostname {{ my_hostname }}
+
+- pause:
+    minutes: 5
+
+- name: start containter
+  command: vzctl start {{ my_ct_id }}

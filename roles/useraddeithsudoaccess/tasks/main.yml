@@ -1,0 +1,11 @@
+---
+- name: create group admins
+  group: name=admins system=yes state=present
+
+- name: add users
+  user: name="{{item}}" groups=admins append=yes
+  with_items:
+    - "{{ users }}"
+
+- name: add group in sudoers
+  lineinfile: dest=/etc/sudoers state=present regexp='^%admins' line='%admins ALL=(ALL) NOPASSWD:ALL' 

@@ -1,0 +1,5 @@
+---
+- name: delete unwanted files
+  file: path=/tmp/{{ item }} state=absent
+  with_items:
+  - "{{ files }}"

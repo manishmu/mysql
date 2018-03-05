@@ -1,0 +1,3 @@
+---
+- name: Retsart sysstat
+  service: name=sysstate state=started enabled=yes

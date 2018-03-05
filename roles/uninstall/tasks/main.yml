@@ -1,0 +1,8 @@
+---
+- name: uninstall http
+  yum: name={{ item }} state=absent
+  with_items:
+#  - httpd
+  - mysql
+#  - sar
+#  - ntp

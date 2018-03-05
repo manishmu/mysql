@@ -1,0 +1,5 @@
+---
+- name: Install ntp
+  yum: name=ntp state=installed
+  notify:
+   - Restart ntpd 

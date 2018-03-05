@@ -1,0 +1,14 @@
+---
+- name: Install wget
+  yum: name=wget state=present
+
+- name: Install Java
+  file: path=/opt/java owner=root mode=700 state=directory
+
+#- name: copy java 
+#  copy: src=templates/jre-8u161-linux-x64.tar.gz dest=/opt/java/
+
+- name: extract jre file
+  unarchive: src={{ javasource }} dest={{ javadest }}
+- name: update alternavies
+  alternatives: name=java link={{ javahome }} path={{ javainstalledpath }}

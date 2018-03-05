@@ -1,0 +1,6 @@
+---
+services:
+- sshd
+- httpd
+- ntpd
+- mysql

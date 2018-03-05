@@ -1,0 +1,5 @@
+---
+javasource: templates/jre-8u161-linux-x64.tar.gz
+javahome: /usr/bin/java
+javadest: /opt/java/
+javainstalledpath: /opt/java/jre1.8.0_161/bin/java
