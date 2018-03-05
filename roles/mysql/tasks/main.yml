@@ -37,7 +37,7 @@
   ignore_errors: yes
 
 - name: check table presence
-  shell: mysql -utest -p12345 -D prod < /tmp/table_check.sql|tail -n +2 > /tmp/table_check.sql.log
+  shell: mysql -utest -pxxxxx -D prod < /tmp/table_check.sql|tail -n +2 > /tmp/table_check.sql.log
 
 - name: check the output file
   command: /bin/cat /tmp/table_check.sql.log
