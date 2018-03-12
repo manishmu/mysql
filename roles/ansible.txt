@@ -1,10 +1,7 @@
 ansible stormnode -u root -i maish_hosts -m ping
-ansible stormnode -u root -i maish_hosts -m shell -a "ps -ef|grep nmon" --limit tbstorm02us2
-ansible stormnode -u root -i maish_hosts -m shell -a "/opt/splunkforwarder/bin/splunk stop" --limit tbstorm02us2
+ansible stormnode -u root -i maish_hosts -m shell -a "ps -ef|grep nmon" --limit hostname
+ansible stormnode -u root -i maish_hosts -m shell -a "service ntpd stop" --limit hostname
 ansible stormnode -u root -i maish_hosts -m shell -a " ps -ef| grep nmon|grep -v|awk '{print $2}'
-ansible stormnode -u root -i maish_hosts -m shell -a "ls -la /opt/splunkforwarder/etc/apps" --limit tbstorm02us2
-ansible stormnode -u root -i maish_hosts -m shell -a "rm -rf /opt/splunkforwarder/etc/apps/TA-nmon" --limit tbstorm02us2
-ansible stormnode -u root -i maish_hosts -m shell -a " scp -r /tmp/TA-nmon_1331.tgz dest=/tmp/. " --limit tbstorm13us2
 ======For look example=======================
 for i in `ps -ef|grep nmon|grep -v grep | awk '{print $2}'`; do kill -9 $i; done
 ======command to kill PID by greping the pid of process==============
