@@ -1,10 +1,10 @@
 #!/bin/bash
 #get the user name loged in
 #This is script gives the system info.
-user=`whoami`
-day=`date +%A`
-date=`date +%D`
-lastreboot=`last reboot|grep reboot|tail -1|awk '{print $7" "$6 " "$5}'`
+a=`whoami`
+b=`date +%A`
+d=`date +%D`
+c=`last reboot|grep reboot|tail -1|awk '{print $7" "$6 " "$5}'`
 e=`cat /proc/cpuinfo |grep processor|wc -l`
 f=`cat /proc/meminfo |grep MemTotal|awk '{print $2}'`
 g=`cat /etc/issue|awk '{printf $1" "$2" "$3" "$4}'`
